@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Profile Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Include SheetJS library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <!-- Link to external JS -->
+  <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-50 p-6">
+
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-md p-8">
+
+    <!-- Header -->
+    <header class="flex items-center gap-6 mb-8">
+      <div class="w-20 h-20 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400">
+        <img src="assets/swiggy_logo.png" alt="swiggy_logo" id="brand_logo">
+      </div>
+      <div>
+        <h1 class="text-3xl font-semibold text-gray-900" id="companyTitle">Company Name</h1>
+        <div class="text-lg text-gray-500 italic" id="brandTitle">Brand Name</div>
+      </div>
+    </header>
+
+    <!-- Grid: Basic Info + Contact -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Basic Information -->
+      <section class="bg-white border rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Basic Information</h2>
+        <dl class="grid grid-cols-1 gap-y-3 text-sm text-gray-700">
+          <div class="flex justify-between"><dt class="font-medium">CIN</dt><dd id="bi_cin">U12345ABCDE</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Date of Incorporation</dt><dd id="bi_date_of_incorporation">01 January 2000</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Company Type</dt><dd id="bi_company_type">Public</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Company Status</dt><dd id="bi_company_status">Active</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">MCA Status</dt>
+            <dd class="flex items-center gap-2" id="bi_mca_status">
+              <!-- <span class="inline-block w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs font-semibold flex items-center justify-center">✓</span> -->
+              Registered
+            </dd>
+          </div>
+          <div class="flex justify-between"><dt class="font-medium">SC Code</dt><dd id="bi_sc_code">12345</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Primary Exchange</dt><dd id="bi_primary_exchange">NSE</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Industry</dt><dd id="bi_industry">Technology</dd></div>
+        </dl>
+      </section>
+
+      <!-- Contact Details -->
+      <section class="bg-white border rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Contact Details</h2>
+        <dl class="grid grid-cols-1 gap-y-3 text-sm text-gray-700">
+
+          <div class="flex justify-between">
+            <dt class="font-medium">MCA Address</dt>
+            <dd class="text-right">123 Company Street, Business City</dd>
+          </div>
+
+          <div class="flex justify-between">
+            <dt class="font-medium">Address</dt>
+            <dd class="text-right">456 Corporate Avenue, Business City</dd>
+          </div>
+
+          <div class="flex justify-between">
+            <dt class="font-medium">Website Address</dt>
+            <dd class="text-right">www.example.com</dd>
+          </div>
+
+          <div class="flex justify-between"><dt class="font-medium">Phone</dt><dd class="text-right">+91 1010101010</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Mobile</dt><dd class="text-right">+91 2020202020</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Fax</dt><dd class="text-right">+91 3030303030</dd></div>
+          <div class="flex justify-between items-center">
+            <dt class="font-medium">Email</dt>
+            <dd class="text-right"><a href="mailto:info@example.com" class="text-indigo-600 hover:underline">info@example.com</a></dd>
+          </div>
+          <div class="flex justify-between items-center">
+            <dt class="font-medium">Website</dt>
+            <dd class="text-right"><a href="https://www.example.com" target="_blank" class="text-indigo-600 hover:underline">https://www.example.com</a></dd>
+          </div>
+
+          <div class="pt-2 flex items-center gap-3 mt-2">
+            <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-gray-800">in</a>
+            <a href="#" aria-label="Twitter" class="text-gray-500 hover:text-gray-800">tw</a>
+            <a href="#" aria-label="Instagram" class="text-gray-500 hover:text-gray-800">ig</a>
+            <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-gray-800">fb</a>
+            <a href="#" aria-label="WhatsApp" class="text-gray-500 hover:text-gray-800">wa</a>
+          </div>
+
+        </dl>
+      </section>
+
+    </div>
+
+    <!-- Financial Info -->
+    <div class="mt-6 bg-white border rounded-lg p-6">
+      <h3 class="text-lg font-semibold text-gray-800 mb-3">Financial Information</h3>
+      <a href="/financials" class="inline-block bg-white border rounded px-4 py-2 shadow-sm hover:shadow-md text-indigo-600">View Financials</a>
+    </div>
+
+    <!-- Previous Details -->
+    <div class="mt-6 bg-white border rounded-lg p-6">
+      <h4 class="text-lg font-semibold text-gray-800 mb-3">Previous Details</h4>
+      <div class="text-sm text-gray-700">
+        <div class="flex justify-between py-1"><span class="font-medium">Previous Name(s)</span><span>Old Company Name</span></div>
+        <div class="flex justify-between py-1"><span class="font-medium">Previous CIN(s)</span><span>U56789CD5678XYZ</span></div>
+      </div>
+    </div>
+
+    <!-- Business Description -->
+    <div class="mt-6 bg-white border rounded-lg p-6">
+      <h4 class="text-lg font-semibold text-gray-800 mb-3">Business Description</h4>
+      <p class="text-sm text-gray-700 leading-relaxed" id="businesses_description">
+        We are a leading provider of innovative technology solutions, delivering products and services that empower businesses to scale and thrive in the digital age. Our offerings span software development, cloud infrastructure, and consulting, with a strong focus on customer success.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-6 flex justify-between items-center text-sm text-gray-500">
+      <div>Last updated: <time>29/08/2025</time></div>
+      <div class="flex gap-3">
+        <button class="px-3 py-1 border rounded text-sm">Edit</button>
+        <button class="px-3 py-1 bg-indigo-600 text-white rounded text-sm">Download PDF</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const companyName = params.get("company");
+
+  if (companyName) {
+    const key = companyName.toLowerCase(); // normalize lookup
+    const companyData = JSON.parse(localStorage.getItem(key));
+
+    if (companyData) {
+      document.title = companyData["Brand Name"] + " - Company Details";
+      document.getElementById("brandTitle").innerText = companyData["Brand Name"];
+      document.getElementById("companyTitle").innerText = companyData["Company Name"];
+
+      // set image src
+      const imagePath = "assets/" + companyData["Brand Name"] + ".png";
+      document.getElementById("brand_logo").src = imagePath;
+      document.getElementById("brand_logo").alt = companyData["Brand Name"];
+
+      // basic information
+      document.getElementById("bi_date_of_incorporation").innerText = companyData["Date Of Incorporation"];
+      document.getElementById("bi_company_type").innerText = companyData["Company Type"];
+      document.getElementById("bi_company_status").innerText = companyData["Company Status"];
+      document.getElementById("bi_mca_status").innerText = companyData["MCA Status"];
+      document.getElementById("bi_sc_code").innerText = companyData["SC Code"];
+      document.getElementById("bi_primary_exchange").innerText = companyData["Primary Exchange"];
+      document.getElementById("bi_industry").innerText = companyData["Sub Industry"];
+
+      // contact information
+      // document.getElementById("bi_industry").innerText = companyData["Sub Industry"];
+
+
+      // business description
+      document.getElementById("businesses_description").innerText = companyData["Business Discription"];
+
+      console.log("Company Data:", companyData);
+    } else {
+      console.error("Company not found in localStorage:", key);
+    }
+  }
+</script>
+
+
+
+</body>
+</html>
