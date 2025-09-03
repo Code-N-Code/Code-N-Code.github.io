@@ -55,29 +55,24 @@
 
           <div class="flex justify-between">
             <dt class="font-medium">MCA Address</dt>
-            <dd class="text-right">123 Company Street, Business City</dd>
+            <dd class="text-right" id="cd_mca_address">123 Company Street, Business City</dd>
           </div>
 
           <div class="flex justify-between">
             <dt class="font-medium">Address</dt>
-            <dd class="text-right">456 Corporate Avenue, Business City</dd>
+            <dd class="text-right" id="cd_address">456 Corporate Avenue, Business City</dd>
           </div>
 
-          <div class="flex justify-between">
-            <dt class="font-medium">Website Address</dt>
-            <dd class="text-right">www.example.com</dd>
-          </div>
-
-          <div class="flex justify-between"><dt class="font-medium">Phone</dt><dd class="text-right">+91 1010101010</dd></div>
-          <div class="flex justify-between"><dt class="font-medium">Mobile</dt><dd class="text-right">+91 2020202020</dd></div>
-          <div class="flex justify-between"><dt class="font-medium">Fax</dt><dd class="text-right">+91 3030303030</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Phone</dt><dd class="text-right" id="cd_phone">+91 1010101010</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Mobile</dt><dd class="text-right" id="cd_mobile">+91 2020202020</dd></div>
+          <div class="flex justify-between"><dt class="font-medium">Fax</dt><dd class="text-right" id="cd_fax">+91 3030303030</dd></div>
           <div class="flex justify-between items-center">
             <dt class="font-medium">Email</dt>
-            <dd class="text-right"><a href="mailto:info@example.com" class="text-indigo-600 hover:underline">info@example.com</a></dd>
+            <dd class="text-right"><a href="mailto:info@example.com" class="text-indigo-600 hover:underline" id="cd_email">info@example.com</a></dd>
           </div>
           <div class="flex justify-between items-center">
             <dt class="font-medium">Website</dt>
-            <dd class="text-right"><a href="https://www.example.com" target="_blank" class="text-indigo-600 hover:underline">https://www.example.com</a></dd>
+            <dd class="text-right"><a href="https://www.example.com" target="_blank" class="text-indigo-600 hover:underline" id="cd_website">https://www.example.com</a></dd>
           </div>
 
           <div class="pt-2 flex items-center gap-3 mt-2">
@@ -155,7 +150,13 @@
       document.getElementById("bi_industry").innerText = companyData["Sub Industry"];
 
       // contact information
-      // document.getElementById("bi_industry").innerText = companyData["Sub Industry"];
+      document.getElementById("cd_mca_address").innerText = companyData["MCA Address"];
+      document.getElementById("cd_address").innerText = companyData["Address"];
+      document.getElementById("cd_phone").innerText = companyData["Phone no"];
+      document.getElementById("cd_mobile").innerText = companyData["mobile No"];
+      document.getElementById("cd_fax").innerText = companyData["Fax no"];
+      document.getElementById("cd_email").innerText = companyData["Email"];
+      document.getElementById("cd_website").innerText = companyData["Website"];
 
 
       // business description
