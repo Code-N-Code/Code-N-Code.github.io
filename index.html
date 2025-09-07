@@ -1,29 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Company Directory</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- FontAwesome for Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+    crossorigin="anonymous"></script>
 </head>
-<body class="bg-gray-50 min-h-screen font-sans">
-  <div class="max-w-5xl mx-auto py-12 px-6">
-    
+
+<body class="bg-gradient-to-br from-gray-50 to-indigo-50 min-h-screen font-sans flex flex-col">
+  <div class="flex-grow max-w-6xl mx-auto py-12 px-6">
+
     <!-- Header -->
-    <h1 class="text-4xl font-bold text-gray-800 text-center mb-10">
+    <h1 id="pageTitle"
+      class="text-5xl font-extrabold text-center bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-12">
       Company Directory
     </h1>
 
     <!-- Search Bar -->
-    <div class="flex justify-center mb-8">
+    <div class="flex justify-center mb-10 relative">
       <input type="text" id="searchBox" placeholder="Search companies..."
-        class="w-full md:w-1/2 px-4 py-3 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"/>
+        class="w-full md:w-2/3 px-5 py-3 pl-12 rounded-2xl border border-gray-300 shadow-sm bg-white/70 backdrop-blur focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
     </div>
 
     <!-- Dynamic Company List -->
-    <div id="companyList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <div id="companyList" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
   </div>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white mt-16">
+    <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- About Section -->
+      <div>
+        <h3 class="text-xl font-bold mb-3">About This Directory</h3>
+        <p class="text-sm leading-relaxed text-gray-100">
+          Curated & maintained by <span class="font-semibold">Ajaya Dwivedi</span>.
+          Bringing you authentic company data and brand details in one place.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="text-center">
+        <h3 class="text-xl font-bold mb-3">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-gray-200 transition">About</a></li>
+          <li><a href="#" class="hover:text-gray-200 transition">Contact</a></li>
+          <li><a href="#" class="hover:text-gray-200 transition">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Social + Contact -->
+      <div class="text-center md:text-right">
+        <h3 class="text-xl font-bold mb-3">Follow / Contact Us</h3>
+        <div class="flex md:justify-end justify-center gap-4">
+          <a href="mailto:contact@example.com"
+            class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full hover:bg-white/40 transition"
+            title="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full hover:bg-white/40 transition"
+            title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full hover:bg-white/40 transition"
+            title="Twitter">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full hover:bg-white/40 transition"
+            title="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-white/20 mt-8">
+      <p class="text-center text-sm py-4">&copy; <span id="year"></span> Company Directory. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script>
     async function loadCompanies() {
@@ -52,14 +115,13 @@
           const card = document.createElement("a");
           card.href = `company-details.html?company=${encodeURIComponent(companyName)}`;
           card.className =
-            "company-card block p-6 bg-white rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-1";
+            "company-card block p-6 bg-white/70 backdrop-blur rounded-2xl shadow-md hover:shadow-2xl hover:scale-[1.03] transition transform";
           card.innerHTML = `
-            <h2 class="text-xl font-semibold text-indigo-600">${companyName}</h2>
+            <h2 class="text-2xl font-semibold text-indigo-600">${companyName}</h2>
             <p class="text-gray-500">${brandName}</p>
           `;
           list.appendChild(card);
         });
-
 
       } catch (err) {
         console.error("Error loading companies.xlsx:", err);
@@ -76,6 +138,10 @@
     });
 
     loadCompanies();
+
+    // Auto-update year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>
